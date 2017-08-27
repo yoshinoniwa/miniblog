@@ -15,8 +15,14 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-
+  #投稿を登録
   def create
+    @post = Post.new(params[:post])
+    if @post.save
+      redirect_to @post, notice: "投稿されました。"
+    else
+      render "new"
+    end
   end
 
   def update
