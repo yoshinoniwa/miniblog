@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   #投稿一覧
   def index
     @posts = Post.all #全ての情報を取り出す
+    @post = Post.new(post:"")
   end
   #投稿の詳細
   def show
@@ -30,4 +31,10 @@ class PostsController < ApplicationController
 
   def destroy
   end
+
+  def like
+    @post = Post.published.find(params[:id])
+
+  end
+
 end
