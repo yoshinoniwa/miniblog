@@ -7,11 +7,13 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
-
+  #新規投稿
   def new
+    @post = Post.new(post:"")
   end
-
+  #更新フォーム
   def edit
+    @post = Post.find(params[:id])
   end
 
   def create
