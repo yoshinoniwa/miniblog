@@ -1,0 +1,16 @@
+<% @page_title = "投稿一覧" %>
+<h1><%= @page_title %></h1>
+
+<% if @posts.present? %>
+<table class="list">
+  <% @posts.each do |contents| %>
+  <tr>
+    <td style="text-align: right" ><%= contents.id %> : </td>
+    <td><%= link_to contents.post, contents %></td>
+
+  </tr>
+  <% end %>
+</table>
+<% else %>
+<p>投稿がありません。</p>
+<% end %>
