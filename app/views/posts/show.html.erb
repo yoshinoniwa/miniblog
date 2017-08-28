@@ -4,7 +4,7 @@
 
 <tr>
   <td><font size="4"><%= @post.id %>: </font></td>
-  <td><font color="#BDBDBD">投稿時間<%= @post.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> | いいね: <%= render "votes" %></td>
+  <td><font color="#BDBDBD">投稿時間<%= @post.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> |  <%= render "votes" %></td>
 
   <td><b><%= @post.post %></b></td>
   <br>

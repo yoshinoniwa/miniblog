@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   #投稿の詳細
   def show
     @post = Post.find(params[:id])
+    
   end
   #新規投稿
   def new
@@ -33,7 +34,6 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post = Post.published.find(params[:id])
 
   end
 
