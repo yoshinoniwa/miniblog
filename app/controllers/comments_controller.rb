@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     if params[:post_id]
       @post = Post.find(params[:post_id])
       @comments = @post.comments
+
     else
       @comments = Comment.all
     end
@@ -22,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
     if @comment.save
-      redirect_to :action =>"index", notice: "投稿されました。"
+      redirect_to :action =>"index", notice: "コメントしました。"
     else
       render "new"
     end

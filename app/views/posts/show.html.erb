@@ -5,16 +5,18 @@
 <tr >
   <td><font size="4"><%= @post.id %>: </font></td>
   <td><font color="#BDBDBD">投稿日時<%= @post.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> |
-    <%= link_to "いいね" %>: <%= @count %></td>
+    <%= link_to "いいね" %>: </td>
   <br>
   <td ><b><%= @post.post %></b></td>
   <br>
 
   <hr>
-
   <ul>
-    <%= link_to "コメント",[@post, :comments] %>
-
-  </ul>
-
+  <% @comments.reverse_each do |contents| %>
+    <p>
+      <b><%= contents.comment %></b> |
+      <font color="#BDBDBD">投稿日時<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font>
+    </p>
+  <% end %>
+</ul>
 </tr>

@@ -6,20 +6,17 @@ class PostsController < ApplicationController
     @posts = Post.order("id DESC") #IDを逆順に並べる
     @post = Post.new(post:"")
 
-    @count = 1
-
-
-
   end
   #投稿の詳細
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
 
     # like = @post.like
     # likenum = like.to_i
     # @addnum = :count
     # # addintnum = addnum.to_i
-    @count = 0
+
 
 
   end
@@ -37,7 +34,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      redirect_to @post, notice: "投稿されました。"
+      redirect_to :action=>"index", notice: "投稿されました。"
     else
       render "new"
     end

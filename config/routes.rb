@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
   get "like" => "posts#like", as: "like"
   get "show" => "posts#show", as: "show"
 

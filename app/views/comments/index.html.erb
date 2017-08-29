@@ -4,10 +4,9 @@
 <% end %>
 
 <hr>
-<% @comments.each do |contents| %>
+<% @comments.reverse_each do |contents| %>
   <p>
-    <b><% contents.comment %></b> |
-    <font color="#BDBDBD">投稿日時<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> |
-    <%= link_to "いいね" %>:
+    <b><%= contents.comment %></b> |
+    <font color="#BDBDBD">投稿日時<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> 
   </p>
 <% end %>
