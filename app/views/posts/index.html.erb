@@ -1,11 +1,11 @@
 
-<% if @posts.present? %>
-
 <%= form_for @post do |form| %>
 <%= render "form", form: form %>
 <%= form.submit "投稿する" %>
+
 <hr>
 <% end %>
+<% if @posts.present? %>
 
 <table class="list">
 
@@ -13,8 +13,8 @@
   <tr>
     <td style="text-align: left" ><%= contents.id %> :
     <%= link_to contents.post, contents %>
-    <p>いいね:  |コメント数 |
-        <font color="#BDBDBD">投稿時間<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font>
+    <p><%= link_to "いいね" %>:  <%= @count %>|コメント数 |
+        <font color="#BDBDBD">投稿日時<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font>
     </p>
     <hr width="1000" color="#F2F2F2">
   </td>

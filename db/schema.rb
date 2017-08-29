@@ -16,15 +16,16 @@ ActiveRecord::Schema.define(version: 20170828051754) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
+    t.bigint "post_id", null: false
     t.string "comment", null: false
-    t.integer "postid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "post", null: false
-    t.integer "like"
+    t.integer "like", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,4 +35,5 @@ ActiveRecord::Schema.define(version: 20170828051754) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "posts"
 end

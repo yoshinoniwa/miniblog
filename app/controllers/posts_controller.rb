@@ -1,17 +1,33 @@
 class PostsController < ApplicationController
+
   #投稿一覧
   def index
-    @posts = Post.all #全ての情報を取り出す
+
+    @posts = Post.order("id DESC") #IDを逆順に並べる
     @post = Post.new(post:"")
+
+    @count = 1
+
+
+
   end
   #投稿の詳細
   def show
     @post = Post.find(params[:id])
-    
+
+    # like = @post.like
+    # likenum = like.to_i
+    # @addnum = :count
+    # # addintnum = addnum.to_i
+    @count = 0
+
+
   end
   #新規投稿
   def new
     @post = Post.new(post:"")
+
+
   end
   #更新フォーム
   def edit
@@ -34,6 +50,11 @@ class PostsController < ApplicationController
   end
 
   def like
+    @post = Post.find(params[:id])
+
+    getlike = @post.like
+    count = count.to_i + 1
+    @like = Post.new(like: count)
 
   end
 

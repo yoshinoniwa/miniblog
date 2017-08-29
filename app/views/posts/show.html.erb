@@ -2,13 +2,19 @@
 <p><%= link_to "TOP",:root %></p>
 <hr color="#E6E6E6">
 
-<tr>
+<tr >
   <td><font size="4"><%= @post.id %>: </font></td>
-  <td><font color="#BDBDBD">投稿時間<%= @post.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> |  <%= render "votes" %></td>
-
-  <td><b><%= @post.post %></b></td>
+  <td><font color="#BDBDBD">投稿日時<%= @post.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> |
+    <%= link_to "いいね" %>: <%= @count %></td>
   <br>
-  <input type="text" size="16" style="width: 400px" placeholder="コメントしよう"/>
-  <input type="submit" value="コメントする" />
+  <td ><b><%= @post.post %></b></td>
+  <br>
+
   <hr>
+
+  <ul>
+    <%= link_to "コメント",[@post, :comments] %>
+
+  </ul>
+
 </tr>
