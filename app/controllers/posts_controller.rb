@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-
+@comment = Comment.new(comment:"")
     # like = @post.like
     # likenum = like.to_i
     # @addnum = :count
