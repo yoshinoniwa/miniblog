@@ -4,8 +4,25 @@ class PostsController < ApplicationController
   def index
 
     @posts = Post.order("id DESC") #IDを逆順に並べる
-    @post = Post.new(post:"")
+    @post = Post.new
+    # @comments = @posts.comments
+    if params[:id]
+      count = @post.like + 1
 
+      @like = Post.new();
+      if @like.save
+        redirect_back(fallback_location: root_path)
+      else
+        # render "new"
+      end
+
+    end
+
+
+    # @like = Post.new(like:0)
+    # num = params[:like]
+    # like_num = num.to_i
+    # @likecount = num.to_i + 1
   end
   #投稿の詳細
   def show
@@ -56,6 +73,11 @@ class PostsController < ApplicationController
   end
   private
   def post_params
-    params.require(:post).permit(:id,:post, :created_at, :updated_at)
+    params.require(:post).permit(:id,:post,:like, :created_at, :updated_at)
+  end
+
+  private
+  def like_params
+    params.require(:like).permit(:id,:post,:like, :created_at, :updated_at)
   end
 end
