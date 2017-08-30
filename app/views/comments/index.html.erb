@@ -1,3 +1,4 @@
+<p><%= link_to "TOP",:root %></p>
 <%= form_for @comment,:url => {:action => :create} do |form| %>
 <%= render "form", form: form %>
 <%= form.submit "コメントする" %>
@@ -7,6 +8,6 @@
 <% @comments.reverse_each do |contents| %>
   <p>
     <b><%= contents.comment %></b> |
-    <font color="#BDBDBD">投稿日時<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font> 
+    <font color="#BDBDBD">投稿日時<%= contents.created_at.strftime('%Y/%m/%d/ %H:%M:%S') %></font>
   </p>
 <% end %>

@@ -4,25 +4,18 @@ class PostsController < ApplicationController
   def index
 
     @posts = Post.order("id DESC") #IDを逆順に並べる
+
     @post = Post.new
+
     # @comments = @posts.comments
     if params[:id]
-      count = @post.like + 1
-
-      @like = Post.new();
-      if @like.save
-        redirect_back(fallback_location: root_path)
-      else
-        # render "new"
-      end
-
+      like=Post.find(params[:id])
+      count = like.like + 1
+      like.update_attribute(:like, count)
+      @counter = likea
     end
 
 
-    # @like = Post.new(like:0)
-    # num = params[:like]
-    # like_num = num.to_i
-    # @likecount = num.to_i + 1
   end
   #投稿の詳細
   def show
@@ -34,7 +27,12 @@ class PostsController < ApplicationController
     # @addnum = :count
     # # addintnum = addnum.to_i
 
-
+    if params[:idc]
+      like=Post.find(params[:id])
+      count = like.like + 1
+      like.update_attribute(:like, count)
+      @counter = like
+    end
 
   end
   #新規投稿
@@ -53,7 +51,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_back(fallback_location: root_path)
     else
-      render "new"
+      render "index"
     end
   end
 
@@ -64,11 +62,7 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post = Post.find(params[:id])
 
-    getlike = @post.like
-    count = count.to_i + 1
-    @like = Post.new(like: count)
 
   end
   private
@@ -76,8 +70,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:id,:post,:like, :created_at, :updated_at)
   end
 
-  private
-  def like_params
-    params.require(:like).permit(:id,:post,:like, :created_at, :updated_at)
-  end
 end
