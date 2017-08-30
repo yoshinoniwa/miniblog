@@ -81,4 +81,4 @@ production:
   <<: *default
   database: <%= ENV['postgresql-slippery-53161'] %>
   username: <%= ENV['yoshino'] %>
-  password: <%= ENV['mkca1024'] %>
+  password: <%= ENV['yoshino440'] %>
