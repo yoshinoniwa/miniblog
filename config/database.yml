@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 9.1 and up are supported.
+d# PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -80,7 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: miniblog_production
-  username: miniblog
-  password: <%= ENV['yoshino'] %>
-  
+  database: <%= ENV['postgresql-slippery-53161'] %>
+  username: <%= ENV['yoshino'] %>
+  password: <%= ENV['mkca1024'] %>
