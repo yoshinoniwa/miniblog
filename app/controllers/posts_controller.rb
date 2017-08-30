@@ -4,15 +4,15 @@ class PostsController < ApplicationController
   def index
 
     @posts = Post.order("id DESC") #IDを逆順に並べる
-
     @post = Post.new
-
+    @count = Comment.where(post_id: @posts).count
+    # @count = Post.find(@posts)
     # @comments = @posts.comments
     if params[:id]
       like=Post.find(params[:id])
       count = like.like + 1
       like.update_attribute(:like, count)
-      @counter = likea
+      @counter = like
     end
 
 
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     # # addintnum = addnum.to_i
 
     if params[:idc]
-      like=Post.find(params[:id])
+      like=Post.find(params[:idc])
       count = like.like + 1
       like.update_attribute(:like, count)
       @counter = like
