@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta  charset="utf-8" />
+  <title><%= page_title %></title>
+  <%= stylesheet_link_tag "application"%>
+  </head>
+  <body>
+    <div id="container">
+      <didv id="header">
+        <p><%= link_to "Mini Blog TOP", :root %></p>
+      </div>
+    <%= yield %>
+  </div>
+  </body>
+</html>

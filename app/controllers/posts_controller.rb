@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-@comment = Comment.new(comment:"")
+    @comment = Comment.new(comment:"")
     # like = @post.like
     # likenum = like.to_i
     # @addnum = :count
@@ -32,9 +32,9 @@ class PostsController < ApplicationController
   end
   #投稿を登録
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
     if @post.save
-      redirect_to :action=>"index", notice: "投稿されました。"
+      redirect_back(fallback_location: root_path)
     else
       render "new"
     end
@@ -54,5 +54,8 @@ class PostsController < ApplicationController
     @like = Post.new(like: count)
 
   end
-
+  private
+  def post_params
+    params.require(:post).permit(:id,:post, :created_at, :updated_at)
+  end
 end

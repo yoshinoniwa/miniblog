@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
     if @comment.save
-      redirect_to :controller =>"posts", :action =>"show", notice: "コメントしました。"
+      redirect_back(fallback_location: root_path)
     else
       render "new"
     end
