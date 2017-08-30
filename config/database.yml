@@ -83,3 +83,4 @@ production:
   database: miniblog_production
   username: miniblog
   password: <%= ENV['yoshino'] %>
+  
